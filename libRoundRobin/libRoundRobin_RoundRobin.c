@@ -17,6 +17,14 @@ typedef struct {
     int tiempo_sistema;
 } Proceso;
 
+int comparar_llegada(const void *a, const void *b) {
+    Proceso *p1 = (Proceso *)a;
+    Proceso *p2 = (Proceso *)b;
+    if (p1->tiempo_llegada != p2->tiempo_llegada)
+        return p1->tiempo_llegada - p2->tiempo_llegada;
+    return p1->id_proceso - p2->id_proceso; // desempate por ID
+}
+
 static int ejecutar_round_robin(Proceso *procesos, int cantidad, int quantum, cJSON *array_diagrama) {
     int reloj = 0;
     int terminados = 0;
@@ -102,6 +110,9 @@ JNIEXPORT jstring JNICALL Java_libRoundRobin_RoundRobin_procesoRoundRobin(JNIEnv
         procesos[i].prioridad = cJSON_GetObjectItem(item, "prioridad")->valueint;
         procesos[i].tiempo_restante = procesos[i].tiempo_rafaga;
     }
+
+//Arreglar antes de ejecutar RR
+    qsort(procesos, size, sizeof(Proceso), comparar_llegada);
 
     cJSON *array_diagrama = cJSON_CreateArray();
     for (int i = 0; i < size; i++) {
