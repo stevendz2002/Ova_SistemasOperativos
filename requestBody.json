@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "llegada": 3,
+    "rafaga": 6,
+    "prioridad": 2
+  },
+  {
+    "id": 2,
+    "llegada": 0,
+    "rafaga": 8,
+    "prioridad": 1
+  },
+  {
+    "id": 3,
+    "llegada": 4,
+    "rafaga": 3,
+    "prioridad": 3
+  },
+  {
+    "id": 4,
+    "llegada": 1,
+    "rafaga": 5,
+    "prioridad": 2
+  }
+]
+

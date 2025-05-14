@@ -1,0 +1,12 @@
+services:
+  spring-jni:
+    image: 'steven2000300/sistemasoperativos:latest'
+    ports:
+      - '8083:8080'
+    networks:
+      - red-backend-app
+networks:
+  red-backend-app:
+    driver: bridge
+
+
