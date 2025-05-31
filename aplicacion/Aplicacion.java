@@ -59,7 +59,7 @@ public class Aplicacion {
 
         // Convertimos el StringBuilder a una cadena JSON
         String json = jsonBuilder.toString();
-
+	System.out.println(json);
         // Llamamos al método nativo
         String resultado = procesoRR.procesoRoundRobin(json);
         System.out.println("Resultado Round Robin:\n" + resultado);
